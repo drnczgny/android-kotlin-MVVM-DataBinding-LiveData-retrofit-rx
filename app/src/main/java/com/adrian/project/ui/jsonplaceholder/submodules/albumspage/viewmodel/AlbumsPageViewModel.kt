@@ -1,6 +1,7 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel
 
 import android.databinding.Bindable
+import android.util.Log
 import android.view.View
 import com.adrian.project.BR
 import com.adrian.project.R
@@ -14,24 +15,38 @@ import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPa
  */
 
 class AlbumsPageViewModel
-constructor(val albumsPageModel: AlbumsPageModel, val albumsPageRouter: AlbumsPageRouter) : BaseViewModel() {
+constructor(val model: AlbumsPageModel, val router: AlbumsPageRouter) : BaseViewModel(), AlbumsPageModel.OnAlbumListCallback {
 
-    var albums: List<ListItemViewModel> = albumsPageModel.testAlbums()
-//    var albums: List<ListItemViewModel> = ArrayList()
 
-//        @Bindable get() = albums
+    @Bindable
+    var albums: List<ListItemViewModel> = model.testAlbums()
 //        set(value) {
-//            albums = value
-//            notifyPropertyChanged(BR.albums)
+//            if (albums != value && !albums.equals(value)) {
+//                albums = value
+//                notifyPropertyChanged(BR.albums)
+//            }
 //        }
 
-//    init {
-//        albums = testAlbums()
-//    }
+    override fun onFindAllAlbumSuccess(items: List<AlbumItemViewModel>) {
+        Log.i("TAG", items.toString());
+        albums = items
+    }
 
-//    val albums by lazy {
-//        testAlbums()
-//    }
+    override fun onFindAllAlbumError(t: Throwable) {
+        t.printStackTrace()
+    }
+
+    fun onClickGetAlbums(view: View) {
+        model.findAllAlbum()
+    }
+
+    fun onCreateView() {
+        model.registerCallback(this)
+    }
+
+    fun onDestroy() {
+        model.unRegisterCallback()
+    }
 
     @Bindable
     fun getItemLayoutId() = R.layout.list_item_album
@@ -40,9 +55,4 @@ constructor(val albumsPageModel: AlbumsPageModel, val albumsPageRouter: AlbumsPa
     fun getVariableId(): Int {
         return BR.viewModel
     }
-
-    fun onClickGetAlbums(view: View) {
-        albumsPageModel.findAllAlbum()
-    }
-
 }

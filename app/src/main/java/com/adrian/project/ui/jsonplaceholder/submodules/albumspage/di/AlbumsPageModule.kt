@@ -36,10 +36,10 @@ class AlbumsPageModule {
 
     @FragmentScope
     @Provides
-    fun providesAlbumsPageModel(@Named("DefaultAlbumInteractor") albumInteractor: AlbumInteractor) = AlbumsPageModel(albumInteractor)
+    fun providesAlbumsPageModel(@Named("DefaultAlbumInteractor") interactor: AlbumInteractor) = AlbumsPageModel(interactor)
 
     @FragmentScope
     @Provides
-    fun providesAlbumsPageViewModel(albumsPageModel: AlbumsPageModel, albumsPageRouter: AlbumsPageRouter)
-            = AlbumsPageViewModel(albumsPageModel, albumsPageRouter)
+    fun providesAlbumsPageViewModel(model: AlbumsPageModel, router: AlbumsPageRouter)
+            = AlbumsPageViewModel(model, router)
 }

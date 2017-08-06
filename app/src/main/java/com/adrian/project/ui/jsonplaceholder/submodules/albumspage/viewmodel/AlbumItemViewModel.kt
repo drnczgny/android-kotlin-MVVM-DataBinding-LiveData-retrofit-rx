@@ -36,4 +36,9 @@ class AlbumItemViewModel(var album: Album) : ListItemViewModel() {
             notifyPropertyChanged(BR.title)
         }
 
+    override fun toString(): String {
+        return "AlbumItemViewModel(album=$album)"
+    }
+
+
 }

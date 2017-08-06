@@ -21,7 +21,7 @@ import javax.inject.Inject
 class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
 
     @Inject
-    lateinit var albumsPageViewModel: AlbumsPageViewModel
+    lateinit var viewModel: AlbumsPageViewModel
 
     lateinit var binding: FragmentAlbumsPageBinding
 
@@ -43,11 +43,12 @@ class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        albumsPageViewModel.toString()
+        viewModel.toString()
+        viewModel.onCreateView()
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_albums_page, container, false)
         val view = binding.getRoot()
-        binding?.viewModel = albumsPageViewModel
+        binding?.viewModel = viewModel
         binding?.executePendingBindings()
 
         binding?.rvAlbums?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false))
@@ -59,10 +60,14 @@ class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
         super.onAttach(context)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.onDestroy()
+    }
+
     override fun onDetach() {
         super.onDetach()
     }
-
 
     fun getLayoutId() = R.layout.fragment_albums_page
 

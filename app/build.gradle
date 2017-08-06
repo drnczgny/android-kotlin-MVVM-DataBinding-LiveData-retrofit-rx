@@ -71,6 +71,8 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.9'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 
+    compile 'com.annimon:stream:1.1.8'
+
     testCompile 'junit:junit:4.12'
     kapt 'com.google.dagger:dagger-compiler:2.11'
     kapt 'com.google.dagger:dagger-android-processor:2.11'

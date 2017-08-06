@@ -1,27 +1,36 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.model
 
+import android.util.Log
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumInteractor
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.DefaultAlbumInteractor
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.Album
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumItemViewModel
+import com.annimon.stream.Collectors
+import com.annimon.stream.Stream
 import rx.Observer
 
 /**
  * Created by cadri on 2017. 08. 05..
  */
 
-class AlbumsPageModel constructor(val albumInteractor: AlbumInteractor) : DefaultAlbumInteractor.OnAlbumListCallback {
+class AlbumsPageModel constructor(val interactor: AlbumInteractor) {
 
     object name {
         @JvmStatic val TAG = AlbumsPageModel::class.java.simpleName
     }
 
-    var albumListObserver: Observer<List<Album>>? = null
+    lateinit var albumListObserver: Observer<List<Album>>
+    lateinit var albumObserver: Observer<Album>
 
-    var albumObserver: Observer<Album>? = null
+    var callback: OnAlbumListCallback? = null
+
+    init {
+        createAlbumListObserver()
+        createAlbumObserver()
+    }
 
     fun findAllAlbum() {
-        albumInteractor.findAll()
+        interactor.findAll(albumListObserver)
     }
 
     fun testAlbums(): List<AlbumItemViewModel> {
@@ -32,11 +41,61 @@ class AlbumsPageModel constructor(val albumInteractor: AlbumInteractor) : Defaul
                 AlbumItemViewModel(Album(4, 4, "title4")))
     }
 
-    override fun onFindAllAlbumSuccess(albums: List<Album>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    fun registerCallback(callback: OnAlbumListCallback) {
+        this.callback = callback
     }
 
-    override fun onFindAllAlbumError(t: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    fun unRegisterCallback() {
+        this.callback = null
+    }
+
+    private fun convertToViewModel(album: Album) = AlbumItemViewModel(album)
+
+    private fun convertToViewModel(albums: List<Album>): List<AlbumItemViewModel>
+            = Stream.of(albums.map { album -> convertToViewModel(album) }).collect(Collectors.toList())
+
+    private fun createAlbumListObserver() {
+        albumListObserver = object : Observer<List<Album>> {
+            override fun onCompleted() {
+                Log.i(DefaultAlbumInteractor.name.TAG, "onCompleted")
+            }
+
+            override fun onError(e: Throwable) {
+                Log.i(DefaultAlbumInteractor.name.TAG, "onError")
+                e.printStackTrace()
+                callback?.onFindAllAlbumError(e)
+            }
+
+            override fun onNext(albums: List<Album>) {
+                Log.i(DefaultAlbumInteractor.name.TAG, "onNext")
+                callback?.onFindAllAlbumSuccess(convertToViewModel(albums))
+            }
+        }
+    }
+
+    private fun createAlbumObserver() {
+        albumObserver = object : Observer<Album> {
+            override fun onCompleted() {
+                Log.i(DefaultAlbumInteractor.name.TAG, "onCompleted")
+            }
+
+            override fun onError(e: Throwable) {
+                Log.i(DefaultAlbumInteractor.name.TAG, "onError")
+                e.printStackTrace()
+            }
+
+            override fun onNext(album: Album) {
+                Log.i(DefaultAlbumInteractor.name.TAG, "onNext")
+                Log.i(DefaultAlbumInteractor.name.TAG, album.toString())
+            }
+        }
+    }
+
+    interface OnAlbumListCallback {
+
+        fun onFindAllAlbumSuccess(albums: List<AlbumItemViewModel>)
+
+        fun onFindAllAlbumError(t: Throwable)
+
     }
 }
