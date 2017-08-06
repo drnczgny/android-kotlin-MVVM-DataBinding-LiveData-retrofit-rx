@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-kotlin-dagger2-contributesandroidinjector.iml" filepath="$PROJECT_DIR$/android-kotlin-dagger2-contributesandroidinjector.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-kotlin-dagger2-viewpager.iml" filepath="$PROJECT_DIR$/android-kotlin-dagger2-viewpager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-kotlin-dagger2-viewpager-MVVM-retrofit-rx.iml" filepath="$PROJECT_DIR$/android-kotlin-dagger2-viewpager-MVVM-retrofit-rx.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-kotlin-viewpager.iml" filepath="$PROJECT_DIR$/android-kotlin-viewpager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

@@ -2,9 +2,10 @@ package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.di
 
 import com.adrian.project.data.ApiService
 import com.adrian.project.scope.FragmentScope
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageModel
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageFragment
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageModel
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageRouter
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumsPageViewModel
 import dagger.Module
 import dagger.Provides
 
@@ -22,4 +23,9 @@ class AlbumsPageModule {
     @FragmentScope
     @Provides
     fun providesAlbumsPageModel(apiService: ApiService) = AlbumsPageModel(apiService)
+
+    @FragmentScope
+    @Provides
+    fun providesAlbumsPageViewModel(albumsPageModel: AlbumsPageModel, albumsPageRouter: AlbumsPageRouter)
+            = AlbumsPageViewModel(albumsPageModel, albumsPageRouter)
 }

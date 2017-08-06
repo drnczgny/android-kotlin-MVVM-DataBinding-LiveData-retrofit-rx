@@ -1,21 +1,29 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage
 
 import android.content.Context
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.adrian.project.BR
 import com.adrian.project.R
+import com.adrian.project.databinding.FragmentAlbumsPageBinding
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageFragment.name.TAG
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumsPageViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
+
 
 class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
 
     @Inject
-    lateinit var albumsPageModel: AlbumsPageModel
+    lateinit var albumsPageViewModel: AlbumsPageViewModel
+
+    lateinit var binding: FragmentAlbumsPageBinding
 
     companion object {
         fun newInstance(): AlbumsPageFragment {
@@ -35,9 +43,16 @@ class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        albumsPageModel.callApiService()
+        albumsPageViewModel.toString()
 
-        return inflater!!.inflate(R.layout.fragment_albums_page, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_albums_page, container, false)
+        val view = binding.getRoot()
+        binding?.viewModel = albumsPageViewModel
+        binding?.executePendingBindings()
+
+        binding?.rvAlbums?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false))
+
+        return view
     }
 
     override fun onAttach(context: Context?) {
@@ -48,4 +63,10 @@ class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
         super.onDetach()
     }
 
+
+    fun getLayoutId() = R.layout.fragment_albums_page
+
+    fun getVariableId(): Int {
+        return BR.viewModel
+    }
 }
