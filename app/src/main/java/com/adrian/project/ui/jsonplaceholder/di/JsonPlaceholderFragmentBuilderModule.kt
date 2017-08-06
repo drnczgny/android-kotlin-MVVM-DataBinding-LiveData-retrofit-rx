@@ -1,7 +1,7 @@
 package com.adrian.project.ui.jsonplaceholder.di
 
 import com.adrian.project.scope.FragmentScope
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageFragment
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPageFragment
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.di.AlbumsPageModule
 import com.adrian.project.ui.jsonplaceholder.submodules.commentspage.CommentsPageFragment
 import com.adrian.project.ui.jsonplaceholder.submodules.commentspage.di.CommentsPageModule

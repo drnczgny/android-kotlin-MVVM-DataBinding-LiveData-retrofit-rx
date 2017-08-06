@@ -1,4 +1,4 @@
-package com.adrian.project.ui.jsonplaceholder.submodules.albumspage
+package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view
 
 import android.content.Context
 import android.databinding.DataBindingUtil
@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import com.adrian.project.BR
 import com.adrian.project.R
 import com.adrian.project.databinding.FragmentAlbumsPageBinding
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageFragment.name.TAG
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPageFragment.name.TAG
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumsPageViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject

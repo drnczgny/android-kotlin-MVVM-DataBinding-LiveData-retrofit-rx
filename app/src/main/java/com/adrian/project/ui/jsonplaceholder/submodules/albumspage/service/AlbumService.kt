@@ -1,5 +1,6 @@
-package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel
+package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service
 
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.Album
 import retrofit2.http.GET
 import rx.Observable
 

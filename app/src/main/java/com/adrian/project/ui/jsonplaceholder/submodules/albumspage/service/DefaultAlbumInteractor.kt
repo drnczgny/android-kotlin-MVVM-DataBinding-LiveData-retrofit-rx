@@ -1,36 +1,47 @@
-package com.adrian.project.ui.jsonplaceholder.submodules.albumspage
+package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service
 
 import android.util.Log
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageModel.name.TAG
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.DefaultAlbumInteractor.name.TAG
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.Album
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumItemViewModel
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumService
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-/**
- * Created by cadri on 2017. 08. 05..
- */
-
-class AlbumsPageModel constructor(val albumService: AlbumService) {
+class DefaultAlbumInteractor constructor(val albumService: AlbumService) : AlbumInteractor {
 
     object name {
-        @JvmStatic val TAG = AlbumsPageModel::class.java.simpleName
+        @JvmStatic val TAG = DefaultAlbumInteractor::class.java.simpleName
     }
 
-    var albumListObserver: Observer<List<Album>>? = null
+    lateinit var albumListObserver: Observer<List<Album>>
 
-    var albumObserver: Observer<Album>? = null
+    lateinit var albumObserver: Observer<Album>
 
-    fun findAllAlbum() {
+    var callback: OnAlbumListCallback? = null
+
+    init {
         createAlbumListObserver()
         createAlbumObserver()
+    }
+
+    override fun findAll() {
 
         albumService.findAllAlbum()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(albumListObserver)
+    }
+
+    override fun findById(id: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    fun registerCallback(callback: OnAlbumListCallback) {
+        this.callback = callback
+    }
+
+    fun unRegisterCallback() {
+        this.callback = null
     }
 
     private fun createAlbumListObserver() {
@@ -71,12 +82,11 @@ class AlbumsPageModel constructor(val albumService: AlbumService) {
         }
     }
 
-    fun testAlbums(): List<AlbumItemViewModel> {
-        return listOf(
-                AlbumItemViewModel(Album(1, 1, "title1")),
-                AlbumItemViewModel(Album(2, 2, "title2")),
-                AlbumItemViewModel(Album(3, 3, "title3")),
-                AlbumItemViewModel(Album(4, 4, "title4")))
-    }
+    interface OnAlbumListCallback {
 
+        fun onFindAllAlbumSuccess(albums: List<Album>)
+
+        fun onFindAllAlbumError(t: Throwable)
+
+    }
 }

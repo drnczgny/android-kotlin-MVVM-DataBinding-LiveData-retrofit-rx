@@ -6,8 +6,8 @@ import com.adrian.project.BR
 import com.adrian.project.R
 import com.adrian.project.base.BaseViewModel
 import com.adrian.project.base.ListItemViewModel
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageModel
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageRouter
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.model.AlbumsPageModel
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPageRouter
 
 /**
  * Created by cadri on 2017. 08. 06..

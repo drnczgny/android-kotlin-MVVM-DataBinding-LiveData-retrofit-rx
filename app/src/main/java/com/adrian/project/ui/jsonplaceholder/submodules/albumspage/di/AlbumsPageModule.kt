@@ -1,10 +1,12 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.di
 
 import com.adrian.project.scope.FragmentScope
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageFragment
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageModel
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageRouter
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumService
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.model.AlbumsPageModel
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumInteractor
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumService
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.DefaultAlbumInteractor
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPageFragment
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPageRouter
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumsPageViewModel
 import dagger.Module
 import dagger.Provides
@@ -24,14 +26,17 @@ class AlbumsPageModule {
 
     @FragmentScope
     @Provides
-    fun providesAlbumService(@Named("jsonplaceholderapi") retrofit: Retrofit): AlbumService {
-        val albumService = retrofit.create(AlbumService::class.java)
-        return albumService
-    }
+    fun providesAlbumService(@Named("jsonplaceholderapi") retrofit: Retrofit): AlbumService
+            = retrofit.create(AlbumService::class.java)
 
     @FragmentScope
     @Provides
-    fun providesAlbumsPageModel(albumService: AlbumService) = AlbumsPageModel(albumService)
+    @Named("DefaultAlbumInteractor")
+    fun providesAlbumInteractor(albumService: AlbumService): AlbumInteractor = DefaultAlbumInteractor(albumService)
+
+    @FragmentScope
+    @Provides
+    fun providesAlbumsPageModel(@Named("DefaultAlbumInteractor") albumInteractor: AlbumInteractor) = AlbumsPageModel(albumInteractor)
 
     @FragmentScope
     @Provides
