@@ -20,6 +20,13 @@ class AlbumsPageModule {
     @Provides
     fun providesAlbumsPageRouter(albumsPageFragment: AlbumsPageFragment): AlbumsPageRouter = albumsPageFragment
 
+//    @FragmentScope
+//    @Provides
+//    fun providesAlbumsService(retrofit: Retrofit): AlbumService {
+//        val albumService = retrofit.create(AlbumService::class.java)
+//        return albumService
+//    }
+
     @FragmentScope
     @Provides
     fun providesAlbumsPageModel(apiService: ApiService) = AlbumsPageModel(apiService)

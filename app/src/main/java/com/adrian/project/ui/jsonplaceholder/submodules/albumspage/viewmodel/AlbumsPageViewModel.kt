@@ -1,6 +1,7 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel
 
 import android.databinding.Bindable
+import android.view.View
 import com.adrian.project.BR
 import com.adrian.project.R
 import com.adrian.project.base.BaseViewModel
@@ -40,12 +41,8 @@ constructor(val albumsPageModel: AlbumsPageModel, val albumsPageRouter: AlbumsPa
         return BR.viewModel
     }
 
-    fun testAlbums(): List<AlbumItemViewModel> {
-        return listOf(
-                AlbumItemViewModel("1", "title1"),
-                AlbumItemViewModel("2", "title2"),
-                AlbumItemViewModel("3", "title3"),
-                AlbumItemViewModel("4", "title4"))
+    fun onClickGetAlbums(view: View) {
+//        albumsPageModel.findAllAlbum()
     }
 
 }

@@ -16,13 +16,24 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.id}"
+            android:text="@{String.valueOf(viewModel.id)}"
+            android:paddingRight="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.userId)}"
             android:paddingRight="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.title}"/>
+
+        <!--<EditText-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@={viewModel.title}"/>-->
 
     </LinearLayout>
 </layout>
