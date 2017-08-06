@@ -1,6 +1,14 @@
 package com.adrian.project.di
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
+import dagger.Provides
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 /**
  * Created by cadri on 2017. 08. 06..
@@ -10,14 +18,14 @@ import dagger.Module
 class NetworkModule {
 
 
-//    @Singleton
-//    @Provides
-//    fun provideGson(): Gson {
-//        val gson = GsonBuilder()
-//                .setLenient()
-//                .create()
-//        return gson
-//    }
+    @Singleton
+    @Provides
+    fun provideGson(): Gson {
+        val gson = GsonBuilder()
+                .setLenient()
+                .create()
+        return gson
+    }
 
 //    @Singleton
 //    @Provides
@@ -61,17 +69,17 @@ class NetworkModule {
 //        return client;
 //    }
 
-//    @Singleton
-//    @Provides
-//    fun provideRetrofitForJsonPlaceholderApi(gson: Gson, client: OkHttpClient): Retrofit {
-//        val retrofit = Retrofit.Builder()
-//                .baseUrl("http://jsonplaceholder.typicode.com")
-//                .addConverterFactory(GsonConverterFactory.create(gson))
-//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-////                .client(client)
-//                .build()
-//        return retrofit
-//    }
+    @Singleton
+    @Provides
+    fun provideRetrofitForJsonPlaceholderApi(gson: Gson, client: OkHttpClient): Retrofit {
+        val retrofit = Retrofit.Builder()
+                .baseUrl("http://jsonplaceholder.typicode.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .client(client)
+                .build()
+        return retrofit
+    }
 
 
 
