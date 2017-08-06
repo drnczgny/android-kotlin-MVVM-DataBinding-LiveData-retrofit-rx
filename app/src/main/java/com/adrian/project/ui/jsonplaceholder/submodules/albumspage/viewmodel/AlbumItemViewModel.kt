@@ -13,7 +13,7 @@ class AlbumItemViewModel(var _id: String, var _title: String) : ListItemViewMode
     var id: String
         @Bindable get() = _id
         set(value) {
-            _title = value
+            _id = value
             notifyPropertyChanged(BR.id)
         }
 
