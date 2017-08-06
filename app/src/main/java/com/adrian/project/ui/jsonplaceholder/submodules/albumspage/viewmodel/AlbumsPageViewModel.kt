@@ -42,7 +42,7 @@ constructor(val albumsPageModel: AlbumsPageModel, val albumsPageRouter: AlbumsPa
     }
 
     fun onClickGetAlbums(view: View) {
-//        albumsPageModel.findAllAlbum()
+        albumsPageModel.findAllAlbum()
     }
 
 }

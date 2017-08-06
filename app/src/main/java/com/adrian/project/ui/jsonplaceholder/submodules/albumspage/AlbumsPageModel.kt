@@ -1,17 +1,19 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage
 
 import android.util.Log
-import com.adrian.project.data.ApiService
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.AlbumsPageModel.name.TAG
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.Album
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumItemViewModel
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumService
 import rx.Observer
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 /**
  * Created by cadri on 2017. 08. 05..
  */
 
-class AlbumsPageModel constructor(val apiService: ApiService) {
+class AlbumsPageModel constructor(val albumService: AlbumService) {
 
     object name {
         @JvmStatic val TAG = AlbumsPageModel::class.java.simpleName
@@ -22,10 +24,13 @@ class AlbumsPageModel constructor(val apiService: ApiService) {
     var albumObserver: Observer<Album>? = null
 
     fun findAllAlbum() {
-//        albumService.findAllAlbum()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(albumListObserver)
+        createAlbumListObserver()
+        createAlbumObserver()
+
+        albumService.findAllAlbum()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(albumListObserver)
     }
 
     private fun createAlbumListObserver() {
