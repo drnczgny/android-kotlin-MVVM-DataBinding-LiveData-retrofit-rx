@@ -42,7 +42,6 @@ class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel.toString()
         viewModel.onCreateView()
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_albums_page, container, false)
@@ -55,18 +54,10 @@ class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
         return view
     }
 
-//    override fun onAttach(context: Context?) {
-//        super.onAttach(context)
-//    }
-
     override fun onDestroy() {
-        super.onDestroy()
         viewModel.onDestroy()
+        super.onDestroy()
     }
-
-//    override fun onDetach() {
-//        super.onDetach()
-//    }
 
     fun getLayoutId() = R.layout.fragment_albums_page
 

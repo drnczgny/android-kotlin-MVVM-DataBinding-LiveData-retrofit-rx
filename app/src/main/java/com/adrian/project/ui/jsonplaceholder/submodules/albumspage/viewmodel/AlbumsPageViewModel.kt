@@ -20,19 +20,20 @@ constructor(val model: AlbumsPageModel, val router: AlbumsPageRouter) : BaseView
     @Bindable
     var albums: List<ListItemViewModel> = model.testAlbums()
         set(value) {
-//            if (albums != value && !albums.equals(value)) {
+            if (albums != value && !albums.equals(value)) {
                 field = value
                 notifyPropertyChanged(BR.albums)
-//            }
+            }
         }
 
     init {
         model.registerCallback(this)
+        model.findAllAlbum()
     }
 
     override fun onFindAllAlbumSuccess(items: List<AlbumItemViewModel>) {
-        Log.i("TAG", items.toString());
         albums = items
+        Log.i("TAG", items.toString());
     }
 
     override fun onFindAllAlbumError(t: Throwable) {
@@ -44,7 +45,6 @@ constructor(val model: AlbumsPageModel, val router: AlbumsPageRouter) : BaseView
     }
 
     fun onCreateView() {
-//        model.registerCallback(this)
     }
 
     fun onDestroy() {
