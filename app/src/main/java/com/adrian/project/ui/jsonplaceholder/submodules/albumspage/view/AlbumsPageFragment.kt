@@ -1,6 +1,5 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view
 
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -56,18 +55,18 @@ class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
         return view
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-    }
+//    override fun onAttach(context: Context?) {
+//        super.onAttach(context)
+//    }
 
     override fun onDestroy() {
         super.onDestroy()
         viewModel.onDestroy()
     }
 
-    override fun onDetach() {
-        super.onDetach()
-    }
+//    override fun onDetach() {
+//        super.onDetach()
+//    }
 
     fun getLayoutId() = R.layout.fragment_albums_page
 

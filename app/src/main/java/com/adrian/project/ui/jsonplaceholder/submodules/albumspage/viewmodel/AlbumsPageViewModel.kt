@@ -17,15 +17,18 @@ import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPa
 class AlbumsPageViewModel
 constructor(val model: AlbumsPageModel, val router: AlbumsPageRouter) : BaseViewModel(), AlbumsPageModel.OnAlbumListCallback {
 
-
     @Bindable
     var albums: List<ListItemViewModel> = model.testAlbums()
-//        set(value) {
+        set(value) {
 //            if (albums != value && !albums.equals(value)) {
-//                albums = value
-//                notifyPropertyChanged(BR.albums)
+                field = value
+                notifyPropertyChanged(BR.albums)
 //            }
-//        }
+        }
+
+    init {
+        model.registerCallback(this)
+    }
 
     override fun onFindAllAlbumSuccess(items: List<AlbumItemViewModel>) {
         Log.i("TAG", items.toString());
@@ -41,7 +44,7 @@ constructor(val model: AlbumsPageModel, val router: AlbumsPageRouter) : BaseView
     }
 
     fun onCreateView() {
-        model.registerCallback(this)
+//        model.registerCallback(this)
     }
 
     fun onDestroy() {
@@ -55,4 +58,5 @@ constructor(val model: AlbumsPageModel, val router: AlbumsPageRouter) : BaseView
     fun getVariableId(): Int {
         return BR.viewModel
     }
+
 }

@@ -13,7 +13,12 @@ import com.adrian.project.base.ListItemViewModel
 
 class RecyclerViewAdapter<T : ListItemViewModel> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var items: List<T> = ArrayList<T>()
+    var items: List<T> = ArrayList()
+        get() = field
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     var variableId: Int = 0
 

@@ -14,31 +14,38 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get albums"
-            android:onClick="@{viewModel::onClickGetAlbums}"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Albums recyclerview" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvAlbums"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:listItemLayout="@{viewModel.itemLayoutId}"
-                app:listItems="@{viewModel.albums}"
-                app:variableId="@{viewModel.variableId}" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{viewModel::onClickGetAlbums}"
+                    android:text="Get albums" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Albums recyclerview" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvAlbums"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:listItemLayout="@{viewModel.itemLayoutId}"
+                        app:listItems="@{viewModel.albums}"
+                        app:variableId="@{viewModel.variableId}" />
+
+                </LinearLayout>
+            </LinearLayout>
     </LinearLayout>
 </layout>
