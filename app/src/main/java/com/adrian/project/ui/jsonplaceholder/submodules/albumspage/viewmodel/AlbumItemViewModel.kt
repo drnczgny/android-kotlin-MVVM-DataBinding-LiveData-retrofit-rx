@@ -1,6 +1,7 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel
 
-import android.databinding.ObservableField
+import android.databinding.Bindable
+import com.adrian.project.BR
 import com.adrian.project.base.ListItemViewModel
 
 /**
@@ -9,9 +10,20 @@ import com.adrian.project.base.ListItemViewModel
 
 class AlbumItemViewModel(var album: Album) : ListItemViewModel() {
 
+    @Bindable
     var id = album.id
+
+    @Bindable
     var userId = album.userId
-    var title : ObservableField<String> = ObservableField(album.title)
+
+    @Bindable
+    var title = album.title
+    set(value) {
+        if(title != value) {
+            field = value
+            notifyPropertyChanged(BR.title)
+        }
+    }
 
     override fun toString(): String {
         return "AlbumItemViewModel(album=$album)"
