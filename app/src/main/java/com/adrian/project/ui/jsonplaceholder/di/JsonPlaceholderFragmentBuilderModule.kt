@@ -7,7 +7,7 @@ import com.adrian.project.ui.jsonplaceholder.submodules.commentspage.CommentsPag
 import com.adrian.project.ui.jsonplaceholder.submodules.commentspage.di.CommentsPageModule
 import com.adrian.project.ui.jsonplaceholder.submodules.photospage.PhotosPageFragment
 import com.adrian.project.ui.jsonplaceholder.submodules.photospage.di.PhotosPageModule
-import com.adrian.project.ui.jsonplaceholder.submodules.postspage.PostsPageFragment
+import com.adrian.project.ui.jsonplaceholder.submodules.postspage.view.PostsPageFragment
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.di.PostsPageModule
 import com.adrian.project.ui.jsonplaceholder.submodules.todospage.TodosPageFragment
 import com.adrian.project.ui.jsonplaceholder.submodules.todospage.di.TodosPageModule

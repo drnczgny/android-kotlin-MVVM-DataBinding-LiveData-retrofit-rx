@@ -38,5 +38,5 @@ class JsonPlaceholderModule {
     @ActivityScope
     @Provides
     fun providesJsonPlaceholderViewPagerAdapter(jsonPlaceholderActivity: JsonPlaceholderActivity, datamodel: JsonPlaceholderViewPagerDataModel)
-             = JsonPlaceholderViewPagerAdapter(jsonPlaceholderActivity.supportFragmentManager, datamodel)
+            = JsonPlaceholderViewPagerAdapter(jsonPlaceholderActivity.supportFragmentManager, datamodel)
 }

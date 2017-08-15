@@ -3,7 +3,7 @@ package com.adrian.project.ui.jsonplaceholder.viewpager
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.adrian.project.ui.jsonplaceholder.submodules.postspage.PostsPageFragment
+import com.adrian.project.ui.jsonplaceholder.submodules.postspage.view.PostsPageFragment
 
 /**
  * Created by cadri on 2017. 08. 05..

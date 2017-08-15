@@ -2,7 +2,6 @@ package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.model
 
 import android.util.Log
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumInteractor
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.DefaultAlbumInteractor
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.Album
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumItemViewModel
 import com.annimon.stream.Collectors
@@ -57,17 +56,17 @@ class AlbumsPageModel constructor(val interactor: AlbumInteractor) {
     private fun createAlbumListObserver() {
         albumListObserver = object : Observer<List<Album>> {
             override fun onCompleted() {
-                Log.i(DefaultAlbumInteractor.name.TAG, "onCompleted")
+                Log.i(AlbumsPageModel.name.TAG, "onCompleted")
             }
 
             override fun onError(e: Throwable) {
-                Log.i(DefaultAlbumInteractor.name.TAG, "onError")
+                Log.i(AlbumsPageModel.name.TAG, "onError")
                 e.printStackTrace()
                 callback?.onFindAllAlbumError(e)
             }
 
             override fun onNext(albums: List<Album>) {
-                Log.i(DefaultAlbumInteractor.name.TAG, "onNext")
+                Log.i(AlbumsPageModel.name.TAG, "onNext")
                 callback?.onFindAllAlbumSuccess(convertToViewModel(albums))
             }
         }
@@ -76,17 +75,17 @@ class AlbumsPageModel constructor(val interactor: AlbumInteractor) {
     private fun createAlbumObserver() {
         albumObserver = object : Observer<Album> {
             override fun onCompleted() {
-                Log.i(DefaultAlbumInteractor.name.TAG, "onCompleted")
+                Log.i(AlbumsPageModel.name.TAG, "onCompleted")
             }
 
             override fun onError(e: Throwable) {
-                Log.i(DefaultAlbumInteractor.name.TAG, "onError")
+                Log.i(AlbumsPageModel.name.TAG, "onError")
                 e.printStackTrace()
             }
 
             override fun onNext(album: Album) {
-                Log.i(DefaultAlbumInteractor.name.TAG, "onNext")
-                Log.i(DefaultAlbumInteractor.name.TAG, album.toString())
+                Log.i(AlbumsPageModel.name.TAG, "onNext")
+                Log.i(AlbumsPageModel.name.TAG, album.toString())
             }
         }
     }
