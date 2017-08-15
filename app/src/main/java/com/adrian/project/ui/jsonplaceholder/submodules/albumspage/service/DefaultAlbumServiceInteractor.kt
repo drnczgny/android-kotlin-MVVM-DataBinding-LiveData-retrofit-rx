@@ -5,10 +5,10 @@ import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-class DefaultAlbumInteractor constructor(val albumService: AlbumService) : AlbumInteractor {
+class DefaultAlbumServiceInteractor constructor(val albumService: AlbumService) : AlbumServiceInteractor {
     object name {
 
-        @JvmStatic val TAG = DefaultAlbumInteractor::class.java.simpleName
+        @JvmStatic val TAG = DefaultAlbumServiceInteractor::class.java.simpleName
     }
 //    lateinit var albumListObserver: Observer<List<Album>>
 //

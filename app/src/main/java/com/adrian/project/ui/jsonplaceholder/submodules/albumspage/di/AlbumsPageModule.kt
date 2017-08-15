@@ -2,9 +2,9 @@ package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.di
 
 import com.adrian.project.scope.FragmentScope
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.model.AlbumsPageModel
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumInteractor
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumService
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.DefaultAlbumInteractor
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumServiceInteractor
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.DefaultAlbumServiceInteractor
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPageFragment
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.view.AlbumsPageRouter
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumsPageViewModel
@@ -31,12 +31,12 @@ class AlbumsPageModule {
 
     @FragmentScope
     @Provides
-    @Named("DefaultAlbumInteractor")
-    fun providesAlbumInteractor(albumService: AlbumService): AlbumInteractor = DefaultAlbumInteractor(albumService)
+    @Named("DefaultAlbumServiceInteractor")
+    fun providesAlbumInteractor(albumService: AlbumService): AlbumServiceInteractor = DefaultAlbumServiceInteractor(albumService)
 
     @FragmentScope
     @Provides
-    fun providesAlbumsPageModel(@Named("DefaultAlbumInteractor") interactor: AlbumInteractor) = AlbumsPageModel(interactor)
+    fun providesAlbumsPageModel(@Named("DefaultAlbumServiceInteractor") interactor: AlbumServiceInteractor) = AlbumsPageModel(interactor)
 
     @FragmentScope
     @Provides

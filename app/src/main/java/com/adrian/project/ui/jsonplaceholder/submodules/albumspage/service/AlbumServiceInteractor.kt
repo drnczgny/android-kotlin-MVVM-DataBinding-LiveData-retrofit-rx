@@ -7,11 +7,10 @@ import rx.Observer
  * Created by cadri on 2017. 08. 06..
  */
 
-interface AlbumInteractor {
-
-//    fun findAll()
+interface AlbumServiceInteractor {
 
     fun findAll(observer: Observer<List<Album>>)
 
     fun findById(id: Int)
+
 }

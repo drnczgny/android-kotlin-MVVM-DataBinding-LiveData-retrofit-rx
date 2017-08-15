@@ -1,7 +1,7 @@
 package com.adrian.project.ui.jsonplaceholder.submodules.albumspage.model
 
 import android.util.Log
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumInteractor
+import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.service.AlbumServiceInteractor
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.Album
 import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.viewmodel.AlbumItemViewModel
 import com.annimon.stream.Collectors
@@ -12,7 +12,7 @@ import rx.Observer
  * Created by cadri on 2017. 08. 05..
  */
 
-class AlbumsPageModel constructor(val interactor: AlbumInteractor) {
+class AlbumsPageModel constructor(val interactor: AlbumServiceInteractor) {
 
     object name {
         @JvmStatic val TAG = AlbumsPageModel::class.java.simpleName
