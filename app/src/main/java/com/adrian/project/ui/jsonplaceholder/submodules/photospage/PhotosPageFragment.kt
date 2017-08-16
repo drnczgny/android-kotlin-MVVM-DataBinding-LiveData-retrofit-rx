@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.adrian.project.R
-import com.adrian.project.ui.jsonplaceholder.submodules.commentspage.CommentsPageFragment
 import com.adrian.project.ui.jsonplaceholder.submodules.photospage.PhotosPageFragment.name.TAG
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject

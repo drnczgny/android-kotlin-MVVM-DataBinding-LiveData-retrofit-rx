@@ -1,21 +1,28 @@
-package com.adrian.project.ui.jsonplaceholder.submodules.commentspage
+package com.adrian.project.ui.jsonplaceholder.submodules.commentspage.view
 
 import android.content.Context
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.adrian.project.BR
 import com.adrian.project.R
-import com.adrian.project.ui.jsonplaceholder.submodules.commentspage.CommentsPageFragment.name.TAG
+import com.adrian.project.databinding.FragmentCommentsPageBinding
+import com.adrian.project.ui.jsonplaceholder.submodules.commentspage.view.CommentsPageFragment.name.TAG
+import com.adrian.project.ui.jsonplaceholder.submodules.commentspage.viewmodel.CommentsPageViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class CommentsPageFragment : Fragment(), CommentsPageRouter {
 
     @Inject
-    lateinit var commentsPageModel: CommentsPageModel
+    lateinit var viewModel: CommentsPageViewModel
+
+    lateinit var binding: FragmentCommentsPageBinding
 
     companion object {
         fun newInstance(): CommentsPageFragment {
@@ -35,9 +42,15 @@ class CommentsPageFragment : Fragment(), CommentsPageRouter {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        commentsPageModel.callApiService()
+        viewModel.toString()
+        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        val view = binding.getRoot()
+        binding?.viewModel = viewModel
+        binding?.executePendingBindings()
 
-        return inflater!!.inflate(R.layout.fragment_comments_page, container, false)
+        binding?.rvComments?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false))
+
+        return view
     }
 
     override fun onAttach(context: Context?) {
@@ -48,4 +61,9 @@ class CommentsPageFragment : Fragment(), CommentsPageRouter {
         super.onDetach()
     }
 
+    fun getLayoutId() = R.layout.fragment_comments_page
+
+    fun getVariableId(): Int {
+        return BR.viewModel
+    }
 }

@@ -12,7 +12,6 @@ class DefaultPostServiceInteractor constructor(val postService: PostService): Po
     }
 
     override fun findAll(observer: Observer<List<Post>>) {
-
         postService.findAllPost()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -7,7 +7,7 @@ import com.adrian.project.BR
 import com.adrian.project.R
 import com.adrian.project.base.BaseViewModel
 import com.adrian.project.base.ListItemViewModel
-import com.adrian.project.ui.jsonplaceholder.submodules.postspage.view.PostsPageModel
+import com.adrian.project.ui.jsonplaceholder.submodules.postspage.model.PostsPageModel
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.view.PostsPageRouter
 
 /**
@@ -27,7 +27,7 @@ class PostsPageViewModel constructor(val model: PostsPageModel, val router: Post
 
     init {
         model.registerCallback(this)
-//        model.findAllPost()
+//        model.findAllComment()
     }
 
     override fun onFindAllPostSuccess(items: List<PostItemViewModel>) {

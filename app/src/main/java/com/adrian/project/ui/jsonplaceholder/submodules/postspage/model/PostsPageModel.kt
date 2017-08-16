@@ -1,7 +1,6 @@
-package com.adrian.project.ui.jsonplaceholder.submodules.postspage.view
+package com.adrian.project.ui.jsonplaceholder.submodules.postspage.model
 
 import android.util.Log
-import com.adrian.project.ui.jsonplaceholder.submodules.albumspage.model.AlbumsPageModel
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.service.PostServiceInteractor
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.viewmodel.Post
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.viewmodel.PostItemViewModel
@@ -22,7 +21,7 @@ class PostsPageModel constructor(val interactor: PostServiceInteractor) {
     lateinit var postListObserver: Observer<List<Post>>
     lateinit var postObserver: Observer<Post>
 
-    var callback: PostsPageModel.OnPostListCallback? = null
+    var callback: OnPostListCallback? = null
 
     init {
         createPostListObserver()
@@ -33,7 +32,7 @@ class PostsPageModel constructor(val interactor: PostServiceInteractor) {
         interactor.findAll(postListObserver)
     }
 
-    fun registerCallback(callback: PostsPageModel.OnPostListCallback) {
+    fun registerCallback(callback: OnPostListCallback) {
         this.callback = callback
     }
 
@@ -49,17 +48,17 @@ class PostsPageModel constructor(val interactor: PostServiceInteractor) {
     private fun createPostListObserver() {
         postListObserver = object : Observer<List<Post>> {
             override fun onCompleted() {
-                Log.i(PostsPageModel.name.TAG, "onCompleted")
+                Log.i(name.TAG, "onCompleted")
             }
 
             override fun onError(e: Throwable) {
-                Log.i(PostsPageModel.name.TAG, "onError")
+                Log.i(name.TAG, "onError")
                 e.printStackTrace()
                 callback?.onFindAllPostError(e)
             }
 
             override fun onNext(posts: List<Post>) {
-                Log.i(PostsPageModel.name.TAG, "onNext")
+                Log.i(name.TAG, "onNext")
                 callback?.onFindAllPostSuccess(convertToViewModels(posts))
             }
         }
@@ -68,17 +67,17 @@ class PostsPageModel constructor(val interactor: PostServiceInteractor) {
     private fun createPostObserver() {
         postObserver = object : Observer<Post> {
             override fun onCompleted() {
-                Log.i(PostsPageModel.name.TAG, "onCompleted")
+                Log.i(name.TAG, "onCompleted")
             }
 
             override fun onError(e: Throwable) {
-                Log.i(PostsPageModel.name.TAG, "onError")
+                Log.i(name.TAG, "onError")
                 e.printStackTrace()
             }
 
             override fun onNext(post: Post) {
-                Log.i(PostsPageModel.name.TAG, "onNext")
-                Log.i(PostsPageModel.name.TAG, post.toString())
+                Log.i(name.TAG, "onNext")
+                Log.i(name.TAG, post.toString())
             }
         }
     }

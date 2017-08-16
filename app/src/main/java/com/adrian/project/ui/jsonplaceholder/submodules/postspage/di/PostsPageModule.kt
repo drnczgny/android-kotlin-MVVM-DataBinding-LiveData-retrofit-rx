@@ -5,7 +5,7 @@ import com.adrian.project.ui.jsonplaceholder.submodules.postspage.service.Defaul
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.service.PostService
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.service.PostServiceInteractor
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.view.PostsPageFragment
-import com.adrian.project.ui.jsonplaceholder.submodules.postspage.view.PostsPageModel
+import com.adrian.project.ui.jsonplaceholder.submodules.postspage.model.PostsPageModel
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.view.PostsPageRouter
 import com.adrian.project.ui.jsonplaceholder.submodules.postspage.viewmodel.PostsPageViewModel
 import dagger.Module

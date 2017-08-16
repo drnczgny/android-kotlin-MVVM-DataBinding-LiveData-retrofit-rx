@@ -1,4 +1,4 @@
-package com.adrian.project.ui.jsonplaceholder.submodules.commentspage
+package com.adrian.project.ui.jsonplaceholder.submodules.commentspage.view
 
 /**
  * Created by cadri on 2017. 08. 05..

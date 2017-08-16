@@ -1,12 +1,48 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.jsonplaceholder.submodules.albumspage.view.AlbumsPageFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.adrian.project.ui.jsonplaceholder.submodules.commentspage.viewmodel.CommentsPageViewModel"/>
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="comments page fragment" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::onClickGetComments}"
+                android:text="Get comments" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comments recyclerview" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:listItemLayout="@{viewModel.itemLayoutId}"
+                    app:listItems="@{viewModel.comments}"
+                    app:variableId="@{viewModel.variableId}" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
