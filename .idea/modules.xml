@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android-kotlin-dagger2-contributesandroidinjector.iml" filepath="$PROJECT_DIR$/android-kotlin-dagger2-contributesandroidinjector.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-kotlin-dagger2-viewpager.iml" filepath="$PROJECT_DIR$/android-kotlin-dagger2-viewpager.iml" />
+      <module fileurl="file://C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\android-kotlin-dagger2-contributesandroidinjector.iml" filepath="C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\android-kotlin-dagger2-contributesandroidinjector.iml" />
+      <module fileurl="file://C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\android-kotlin-dagger2-viewpager.iml" filepath="C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\android-kotlin-dagger2-viewpager.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-kotlin-dagger2-viewpager-MVVM-retrofit-rx.iml" filepath="$PROJECT_DIR$/android-kotlin-dagger2-viewpager-MVVM-retrofit-rx.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-kotlin-viewpager.iml" filepath="$PROJECT_DIR$/android-kotlin-viewpager.iml" />
+      <module fileurl="file://C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx.iml" filepath="C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx.iml" />
+      <module fileurl="file://C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\android-kotlin-viewpager.iml" filepath="C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\android-kotlin-viewpager.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\app\app.iml" filepath="C:\Users\cadri\AndroidStudioProjects\android-kotlin-dagger2-viewpager-MVVM-retrofit-rx\app\app.iml" />
     </modules>
   </component>
 </project>

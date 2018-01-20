@@ -41,7 +41,7 @@ class AlbumsPageFragment : Fragment(), AlbumsPageRouter {
         Log.i(TAG, "onCreate()")
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewModel.onCreateView()
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_albums_page, container, false)

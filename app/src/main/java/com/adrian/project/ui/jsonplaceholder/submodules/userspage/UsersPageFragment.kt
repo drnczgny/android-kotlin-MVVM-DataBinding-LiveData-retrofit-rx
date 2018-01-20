@@ -34,7 +34,7 @@ class UsersPageFragment : Fragment(), UsersPageRouter {
         Log.i(TAG, "onCreate()")
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         usersPageModel.callApiService()
 
         return inflater!!.inflate(R.layout.fragment_users_page, container, false)

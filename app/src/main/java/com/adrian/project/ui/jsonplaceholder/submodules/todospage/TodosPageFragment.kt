@@ -34,7 +34,7 @@ class TodosPageFragment : Fragment(), TodosPageRouter {
         Log.i(TAG, "onCreate()")
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         todosPageModel.callApiService()
 
         return inflater!!.inflate(R.layout.fragment_todos_page, container, false)

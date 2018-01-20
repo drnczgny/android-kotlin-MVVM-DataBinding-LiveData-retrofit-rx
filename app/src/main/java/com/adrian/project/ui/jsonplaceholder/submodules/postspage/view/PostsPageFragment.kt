@@ -40,7 +40,7 @@ class PostsPageFragment : Fragment(), PostsPageRouter {
         Log.i(TAG, "onCreate()")
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         val view = binding.getRoot()
         binding?.viewModel = viewModel

@@ -41,7 +41,7 @@ class CommentsPageFragment : Fragment(), CommentsPageRouter {
         Log.i(TAG, "onCreate()")
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewModel.toString()
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         val view = binding.getRoot()
