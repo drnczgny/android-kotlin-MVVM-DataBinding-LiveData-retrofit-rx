@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.adrian.android_kotlin_viewpager"
         minSdkVersion 23
@@ -60,6 +60,10 @@ dependencies {
 
     // DATABINDING
     kapt "com.android.databinding:compiler:$android_plugin_version"
+
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:1.0.0"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
 
     // DAGGER
     implementation "com.google.dagger:dagger:$daggerVersion"

@@ -19,4 +19,11 @@
         android:textAllCaps="false"
         android:text="Go to JsonPlaceholder page"/>
 
+    <Button
+        android:id="@+id/btnLiveDataViewModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Go to LiveData viewmodel example"/>
+
 </LinearLayout>
