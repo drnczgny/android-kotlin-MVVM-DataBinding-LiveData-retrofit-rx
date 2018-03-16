@@ -31,9 +31,9 @@ task clean(type: Delete) {
 }
 
 ext {
-    supportLibraryVersion = '27.0.2'
+    supportLibraryVersion = '27.0.3'
     constraintLayoutVersion = '1.0.2'
-    daggerVersion = '2.13'
+    daggerVersion = '2.15'
     rxVersion = '2.1.0'
     okHttpVersion = '3.6.0'
 }
