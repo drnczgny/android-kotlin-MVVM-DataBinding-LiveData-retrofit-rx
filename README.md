@@ -1,4 +1,4 @@
-# android-kotlin-dagger2-viewpager-MVVM-retrofit-rx
+# android-kotlin-MVVM-DataBinding-LiveData-retrofit-rx
 
 v1. branch - using databinding viewmodel witch BaseObservable
 
