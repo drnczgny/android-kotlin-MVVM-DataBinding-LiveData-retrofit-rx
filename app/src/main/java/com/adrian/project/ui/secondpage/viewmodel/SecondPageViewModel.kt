@@ -11,21 +11,16 @@ class SecondPageViewModel constructor(activity: SecondPageActivity) {
     val editText = MutableLiveData<String>()
 
     init {
-
-        editText.observe(activity, Observer {
-            it.let { text.value = it.toString() }
-        })
-
-//        editText.value = "sample text";
-//
-//        text.value = editText.value
+        setupEditTextObserving(activity)
     }
 
-//    @Bindable
-//    val text = "sdjfhkf"
-//
-//    init {
-//        Log.e("TAG", "asdkljflksdflé")
-//    }
+    private fun setupEditTextObserving(activity: SecondPageActivity) {
+        editText.observe(activity, Observer {
+            it.let { updateEditText(it) }
+        })
+    }
 
+    private fun updateEditText(it: String?) {
+        text.postValue(it.toString())
+    }
 }

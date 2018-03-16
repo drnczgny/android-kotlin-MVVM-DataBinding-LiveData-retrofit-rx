@@ -16,18 +16,33 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvText"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@{viewModel.text}" />
+            android:textSize="20sp"
+            android:text="Two way binding with LiveData..." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Type into this gray layout something:" />
 
         <EditText
             android:id="@+id/etText"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:background="@color/cardview_shadow_start_color"
             android:text="@={viewModel.editText}"/>
 
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp"
+            android:background="@color/cardview_shadow_start_color"
+            android:text="@{viewModel.text}" />
     </LinearLayout>
 </layout>

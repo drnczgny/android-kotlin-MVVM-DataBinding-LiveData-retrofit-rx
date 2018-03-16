@@ -37,18 +37,20 @@ class SecondPageActivity : AppCompatActivity(), HasSupportFragmentInjector {
         AndroidInjection.inject(this)
 
         bind()
-
-//        secondPageViewModel.editText.value = "asdasd"
-//
-//        secondPageViewModel.editText.observe(this, Observer {
-//            it.let { secondPageViewModel.text.value = it.toString() }
-//        })
     }
 
     fun bind() {
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding?.viewModel = this.secondPageViewModel
         binding?.executePendingBindings()
+
+        /* This is needed to use LiveData for databinding
+         * Need to tell binding class who’s the LifecycleOwner, so it can track lifecycle properly:
+         */
+        binding?.let {
+            it.viewModel = secondPageViewModel
+            it.setLifecycleOwner(this)
+        }
     }
 
     fun getLayoutId() = R.layout.activity_second_page
